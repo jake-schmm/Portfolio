@@ -197,6 +197,7 @@
     }
 
     .pixelated {
+      opacity: 0;
       visibility: hidden;
     }
     .pixelated.show {
@@ -352,6 +353,7 @@
   <script>
     window.addEventListener('load', () => {
       document.querySelectorAll('.pixelated').forEach(element => {
+          element.style.opacity = '0'; 
           element.classList.add('show');
         });
     });
