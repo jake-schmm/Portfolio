@@ -248,6 +248,18 @@
       font-size: 20px;
       margin: 0 15px;
     }
+    .openAppContainer {
+      display: flex;   
+      flex-direction: column; /* Stacks items in a column */
+      align-items: center; /* prevent contained items from filling whole width due to flex-direction */
+    }
+
+    #video-chat-app-link {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      display: inline-block; 
+      white-space: normal;
+    }
   </style>
 </head>
 <body>
@@ -283,9 +295,15 @@
        <div style="height: 60px"></div>
       <h1>Skills Used</h1>
       <div class="card-shadow block-column icons">
-      <img class="floating" src="images/nodejs.svg" style="height: 80px; width: 80px;">
-      <img class="floating" src="images/socketio.svg" style="height: 80px; width: 80px;">
-      <img class="floating" src="images/peerjs.svg" style="height: 80px; width: 80px;">
+        <img class="floating" src="images/nodejs.svg" style="height: 80px; width: 80px;">
+        <img class="floating" src="images/socketio.svg" style="height: 80px; width: 80px;">
+        <img class="floating" src="images/peerjs.svg" style="height: 80px; width: 80px;">
+      </div>
+      <div style="height: 60px"></div>
+      <h1>Try It Out</h1>
+      <div class="card-shadow block-column icons openAppContainer">
+        <button id="video-chat-app-link" type="button" class="btn btn-primary" style="background-color: #c04cc0;">Go to Application</button>
+        <span>Note: You must allow the browser access to your webcam and microphone when it opens for your video to display.</span>
       </div>
     </div>
   </div>
@@ -296,6 +314,9 @@
         });
     });
 
+    document.querySelector('#video-chat-app-link').addEventListener('click', function() {
+      window.open("https://collaboration-tool.mdbgo.io", '_blank').focus();
+    });
   
   </script>
   <!-- MDB -->

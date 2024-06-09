@@ -77,7 +77,7 @@
     }
 
     img {
-      max-width: 80%;
+      max-width: 100%;
       height: auto;
     }
 
@@ -94,10 +94,16 @@
     .flex-layout {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
       gap: 20px; /* Set horizontal gap */
       box-sizing: border-box;
-   
+      align-items: center;
+    }
+
+    /* Center the last photo if there's an odd number of photos (because there's two photos max per row) */
+    .flex-layout .inner-block-column:nth-last-child(1):nth-child(odd) {
+      flex: 1 1 calc(50% - 20px); /* Keep the width same as other items */
+      max-width: calc(50% - 20px);
+      margin-left: calc(25% + 10px); /* Center it by adding left margin */
     }
 
     .block-column {
@@ -108,28 +114,43 @@
       text-align: center !important;
       padding: 30px;
       border-radius: 5px;
-      flex-basis: 100%; /* Half width minus half the gap */
-      max-width: 100%;
+      flex-basis: 100%; /* Adjusted for gap */
+      max-width: 100%; /* Adjusted for gap */
       margin: 0; /* Remove default margin */
+      box-sizing: border-box;
+    }
+
+    .inner-block-column {
+      flex-grow: 1;
+      min-width: 0;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      text-align: center !important;
+      padding: 30px;
+      border-radius: 5px;
+      flex-basis: calc(50% - 20px); /* Adjusted for gap */
+      max-width: calc(50% - 20px); /* Adjusted for gap */
+      margin: 0; /* Remove default margin */
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 600px) {
+      .block-column {
+        flex-basis: 100% !important; /* Full width on smaller screens */
+        max-width: 100% !important;
+      }
+      .inner-block-column {
+        flex-basis: 100% !important; /* Full width on smaller screens */
+        max-width: 100% !important;
+      }
+
+      .flex-layout .inner-block-column:nth-last-child(1):nth-child(odd) {
+        margin-left: 0; /* Reset margin for small screens */
+      }
     }
 
     .card-shadow {
       box-shadow: 0px 20px 50px 0px rgba(28, 9, 80, 0.07);
-    }
-
-    @media (max-width: 600px) {
-      .block-columns.flex-layout {
-        flex-direction: column;
-      }
-
-      .block-column {
-        flex-basis: 100% !important; /* Full width on mobile */
-        width: 100%;
-        max-width: 100%;
-        margin: 10px 0; /* Set vertical margin */
-      }
-
-      
     }
 
     h4 {
@@ -144,7 +165,6 @@
     .block-columns {
       margin-bottom: 40px;
     }
-
 
     @keyframes pixelate {
       0% {
@@ -178,7 +198,6 @@
       animation: slideInLeft 2s forwards;
     }
 
-
     @keyframes slideInLeft {
       0% {
         opacity: 0;
@@ -200,7 +219,6 @@
         transform: translateX(0); /* End at its original position */
       }
     }
-    
 
     .floating {  
         animation-name: floating;
@@ -222,13 +240,11 @@
         100%   { transform: translate(0, -0px); }    
     }
     ul {
-      
       list-style-position: inside;
       padding: 0;
       margin: 0 auto;
       display: inline-block; /* Center the list container */
       text-align: left; /* Align text to the left within the container */
-  
     }
 
     .navbar {
@@ -291,6 +307,30 @@
       <img class="floating" src="images/php.svg" style="height: 80px; width: 80px;">
       <img class="floating" src="images/mysql.svg" style="height: 80px; width: 80px;">
       </div>
+      <div style="height: 60px"></div>
+      <h1>Photos</h1>
+      <div class="card-shadow block-column icons photoContainer">
+        <div class="flex-layout">
+          <div class="inner-block-column">
+            <img src="images/healthy-bytes/Page1.png" style="width: 100%; height: auto;">
+            <br>
+            <br>
+            <span><b>Add Entries Page:</b> Add food items for a certain date, which creates database records that are used elsewhere throughout the application for insights.</span>
+          </div>
+          <div class="inner-block-column">
+            <img src="images/healthy-bytes/Page2.png" style="width: 100%; height: auto;">
+            <br>
+            <br>
+            <span><b>Show Entries Page:</b> Visualize your diet's macronutrient composition through a pie chart and caloric intake through a progress bar. Delete and edit entries that were entered on the "Add Entries" page. Note: hovering over the pie chart shows the exact count in grams of each macronutrient. This page also displays banners at the top if you're close to reaching goals for the day.</span>
+          </div>
+          <div class="inner-block-column">
+            <img src="images/healthy-bytes/Page3.png" style="width: 100%; height: auto;">
+            <br>
+            <br>
+            <span><b>Dashboard:</b> Visualize how close you are to reaching personalized goals that were generated intelligently when creating an account. Hovering over a bar displays the exact count (calories for caloric intake, grams for macronutrients) compared with your goal. While I did not make this page, I designed the database alongside a tutor which made these insights possible.</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <script>
@@ -299,8 +339,6 @@
           element.classList.add('show');
         });
     });
-
-  
   </script>
   <!-- MDB -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.0/mdb.umd.min.js"></script>

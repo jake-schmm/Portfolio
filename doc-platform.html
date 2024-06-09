@@ -100,6 +100,13 @@
    
     }
 
+    /* Center the last photo if there's an odd number of photos (because there's two photos max per row) */
+    .flex-layout .inner-block-column:nth-last-child(1):nth-child(odd) {
+      flex: 1 1 calc(50% - 20px); /* Keep the width same as other items */
+      max-width: calc(50% - 20px);
+      margin-left: calc(25% + 10px); /* Center it by adding left margin */
+    }
+    
     .block-column {
       flex-grow: 1;
       min-width: 0;
@@ -113,6 +120,22 @@
       margin: 0; /* Remove default margin */
     }
 
+    .inner-block-column {
+      flex-grow: 1;
+      min-width: 0;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      text-align: center !important;
+      padding: 30px;
+      border-radius: 5px;
+      flex-basis: calc(50% - 20px); /* Adjusted for gap */
+      max-width: calc(50% - 20px); /* Adjusted for gap */
+      margin: 0; /* Remove default margin */
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column; /* Make elements appear in a column (note: I didn't have this on health-tracker.html but maybe it is needed there too) */
+      align-items: center;
+    }
     .card-shadow {
       box-shadow: 0px 20px 50px 0px rgba(28, 9, 80, 0.07);
     }
@@ -128,9 +151,16 @@
         max-width: 100%;
         margin: 10px 0; /* Set vertical margin */
       }
+      .inner-block-column {
+        flex-basis: 100% !important; /* Full width on smaller screens */
+        max-width: 100% !important;
+      }
 
-      
+      .flex-layout .inner-block-column:nth-last-child(1):nth-child(odd) {
+        margin-left: 0; /* Reset margin for small screens */
+      }
     }
+
 
     h4 {
       margin-block-start: 1.33em;
@@ -288,6 +318,30 @@
       <div class="card-shadow block-column icons">
       <img class="floating" src="images/php.svg" style="height: 80px; width: 80px;">
       <img class="floating" src="images/mysql.svg" style="height: 80px; width: 80px;">
+      </div>
+      <div style="height: 60px"></div>
+      <h1>Photos</h1>
+      <div class="card-shadow block-column icons photoContainer">
+        <div class="flex-layout">
+          <div class="inner-block-column">
+            <img src="images/word-processor/Photo1.png" style="width: 100%; height: auto;">
+            <br>
+            <br>
+            <span><b>Editor Page:</b> Write rich text in an in-app editor, enable speech-to-text capabilities, save/save as your document, download as PDF, and publish the document in the editor with certain visbility settings (self, friends, or public). </span>
+          </div>
+          <div class="inner-block-column">
+            <img src="images/word-processor/Photo2.png" style="width: 100%; height: auto;">
+            <br>
+            <br>
+            <span><b>Saved Documents Page:</b> View documents that you saved on the "Editor Page" with the saved dates and times. Filter by document name. Open any document to continue your progress from your last save, or delete a document.</span>
+          </div>
+          <div class="inner-block-column">
+            <img src="images/word-processor/Photo3.png" style="width: 100%; height: auto;">
+            <br>
+            <br>
+            <span><b>Forum Page:</b> This is a central hub where you can view and download (as PDF) documents that have been published by other users. Filter by visibility (self, friends on your friends list, public) to change views, and/or filter by document name.</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
