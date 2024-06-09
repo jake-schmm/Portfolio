@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.0/mdb.min.css" rel="stylesheet"/>
+
+  <title>Jake Schramm Portfolio</title>
+  <style>
+    video {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      z-index: -1;
+    }
+
+    .hero-container {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-container > h1 {
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      font-size: 80px;
+    }
+
+    .hero-container > h2 {
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      font-size: 40px;
+      margin-top: -30px;
+      text-align: center;
+    }
+
+    @media screen and (max-width: 992px) {
+      .hero-container > h1 {
+        font-size: 70px;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .hero-container > h1 {
+        font-size: 50px;
+      }
+
+      .hero-container > h2 {
+        font-size: 30px;
+      }
+    }
+
+    .products {
+      padding: 4rem;
+      background: #fff;
+    }
+
+    .products > h5 {
+      font-size: 30px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .products > p {
+      font-size: 20px;
+      padding-bottom: 4rem;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    img {
+      max-width: 80%;
+      height: auto;
+    }
+
+    h1 {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-title {
+        margin-top: -5%;
+    }
+
+    .flex-layout {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px; /* Set horizontal gap */
+      box-sizing: border-box;
+   
+    }
+
+    .block-column {
+      flex-grow: 1;
+      min-width: 0;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      text-align: center !important;
+      padding: 30px;
+      border-radius: 5px;
+      flex-basis: 100%; /* Half width minus half the gap */
+      max-width: 100%;
+      margin: 0; /* Remove default margin */
+    }
+
+    .card-shadow {
+      box-shadow: 0px 20px 50px 0px rgba(28, 9, 80, 0.07);
+    }
+
+    @media (max-width: 600px) {
+      .block-columns.flex-layout {
+        flex-direction: column;
+      }
+
+      .block-column {
+        flex-basis: 100% !important; /* Full width on mobile */
+        width: 100%;
+        max-width: 100%;
+        margin: 10px 0; /* Set vertical margin */
+      }
+
+      
+    }
+
+    h4 {
+      margin-block-start: 1.33em;
+      margin-block-end: 1.33em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-weight: bold;
+      unicode-bidi: isolate;
+    }
+
+    .block-columns {
+      margin-bottom: 40px;
+    }
+
+
+    @keyframes pixelate {
+      0% {
+        opacity: 0;
+        filter: contrast(0%) brightness(0%) blur(10px);
+      }
+      25% {
+        filter: contrast(50%) brightness(50%) blur(5px);
+      }
+      50% {
+        filter: contrast(100%) brightness(100%) blur(2px);
+      }
+      75% {
+        filter: contrast(150%) brightness(150%) blur(1px);
+      }
+      100% {
+        opacity: 1;
+        filter: contrast(200%) brightness(200%) blur(0);
+      }
+    }
+
+    .pixelated.show {
+      animation: pixelate 2s ease-in-out forwards;
+    }
+
+    .first-name {
+      opacity: 0;
+    }
+
+    .first-name {
+      animation: slideInLeft 2s forwards;
+    }
+
+
+    @keyframes slideInLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-100vw); /* Start off-screen on the left */
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0); /* End at its original position */
+      }
+    }
+
+    @keyframes slideInRight {
+      0% {
+        opacity: 0;
+        transform: translateX(100vw); /* Start off-screen on the right */
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0); /* End at its original position */
+      }
+    }
+    
+
+    .floating {  
+        animation-name: floating;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+    }
+    
+    .icons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+   
+    @keyframes floating {
+        0% { transform: translate(0,  0px); }
+        50%  { transform: translate(0, 15px); }
+        100%   { transform: translate(0, -0px); }    
+    }
+    ul {
+      
+      list-style-position: inside;
+      padding: 0;
+      margin: 0 auto;
+      display: inline-block; /* Center the list container */
+      text-align: left; /* Align text to the left within the container */
+  
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #4B0082;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      margin: 0 15px;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  <div class="navbar">
+    <a href="index.html"><i class="fas fa-arrow-left"></i> Back</a>
+  </div>
+  <section>
+    <div class="hero-container">
+      <video src="https://res.cloudinary.com/dam11m9bq/video/upload/v1717891439/video-1_wvamht.mp4" autoplay loop muted></video>
+      <h1>
+        <span class="first-name hero-title">Document Editing and Social Platform</span>
+      </h1>
+      <br>
+      <h2 class="pixelated">A rich-text editing and sharing web app</h2>
+    </div>
+  </section>
+
+  <div style="width: 100%; margin: 0 auto; margin-top: -10vh">
+    <div class="products">
+      <h1>Summary</h1>
+      <div class="card-shadow block-column">
+        <span>Welcome to my Document Editing and Sharing Platform, a versatile web application designed to enhance your productivity and collaboration. This platform provides a rich text editor with advanced formatting options including bold, italic, underline, strikethrough, font size, font selection, color customization, and hyperlink insertion. Here's a detailed overview of the features and capabilities of the platform:</span>
+        <br>
+        <br>
+        <ul>
+            <li><b>Rich Text Editing:</b> Create and edit documents with comprehensive formatting tools.</li>
+            <li><b>Speech-to-Text:</b> Utilize speech recognition to convert your spoken words into text.</li>
+            <li><b>Save and Save As:</b> Securely save your work with options to rename and manage versions.</li>
+            <li><b>Publish Documents:</b> Share your documents with varying levels of visibility—public, self, or friends.</li>
+            <li><b>Download as PDF:</b> Export your documents into PDF format for easy sharing and printing</li>
+            <li><b>Friend Management:</b> Add and remove friends to build your network and share documents more effectively.</li>
+            <li><b>Interactive Forum:</b> Browse, filter, and view documents shared by other users. Download documents that are public or shared by your friends.</li>
+        </ul>
+       </div>
+       <div style="height: 60px"></div>
+      <h1>Skills Used</h1>
+      <div class="card-shadow block-column icons">
+      <img class="floating" src="images/php.svg" style="height: 80px; width: 80px;">
+      <img class="floating" src="images/mysql.svg" style="height: 80px; width: 80px;">
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.pixelated').forEach(element => {
+          element.classList.add('show');
+        });
+    });
+
+  
+  </script>
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.0/mdb.umd.min.js"></script>
+</body>
+<footer style="background-color: white; text-align: center;">
+  <a href="https://lordicon.com/">Icons by Lordicon.com</a>
+</footer>
+</html>

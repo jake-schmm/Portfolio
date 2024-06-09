@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.0/mdb.min.css" rel="stylesheet"/>
+
+  <title>Jake Schramm Portfolio</title>
+  <style>
+    video {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      z-index: -1;
+    }
+
+    .hero-container {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-container > h1 {
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      font-size: 100px;
+    }
+
+    .hero-container > h2 {
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      font-size: 40px;
+      margin-top: -30px;
+    }
+
+    @media screen and (max-width: 992px) {
+      .hero-container > h1 {
+        font-size: 70px;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .hero-container > h1 {
+        font-size: 50px;
+      }
+
+      .hero-container > h2 {
+        font-size: 30px;
+      }
+    }
+
+    .products {
+      padding: 4rem;
+      background: #fff;
+    }
+
+    .products > h5 {
+      font-size: 30px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .products > p {
+      font-size: 20px;
+      padding-bottom: 4rem;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    img {
+      max-width: 80%;
+      height: auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: -5%;
+      display: flex;
+      justify-content: center;
+    }
+
+
+    .flex-layout {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px; /* Set horizontal gap */
+      box-sizing: border-box;
+   
+    }
+
+    .block-column {
+      flex-grow: 1;
+      min-width: 0;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      text-align: center !important;
+      padding: 30px;
+      border-radius: 5px;
+      flex-basis: calc(50% - 10px); /* Half width minus half the gap */
+      max-width: calc(50% - 10px);
+      margin: 0; /* Remove default margin */
+    }
+
+    .card-shadow {
+      box-shadow: 0px 20px 50px 0px rgba(28, 9, 80, 0.07);
+    }
+
+    @media (max-width: 600px) {
+      .block-columns.flex-layout {
+        flex-direction: column;
+      }
+
+      .block-column {
+        flex-basis: 100% !important; /* Full width on mobile */
+        width: 100%;
+        max-width: 100%;
+        margin: 10px 0; /* Set vertical margin */
+      }
+
+      
+    }
+
+    h4 {
+      margin-block-start: 1.33em;
+      margin-block-end: 1.33em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-weight: bold;
+      unicode-bidi: isolate;
+    }
+
+    .block-columns {
+      margin-bottom: 40px;
+    }
+
+
+    @keyframes pixelate {
+      0% {
+        opacity: 0;
+        filter: contrast(0%) brightness(0%) blur(10px);
+      }
+      25% {
+        filter: contrast(50%) brightness(50%) blur(5px);
+      }
+      50% {
+        filter: contrast(100%) brightness(100%) blur(2px);
+      }
+      75% {
+        filter: contrast(150%) brightness(150%) blur(1px);
+      }
+      100% {
+        opacity: 1;
+        filter: contrast(200%) brightness(200%) blur(0);
+      }
+    }
+
+    .pixelated.show {
+      animation: pixelate 2s ease-in-out forwards;
+    }
+
+    .first-name, .last-name {
+      opacity: 0;
+    }
+
+    .first-name {
+      animation: slideInLeft 2s forwards;
+    }
+
+    .last-name {
+      animation: slideInRight 2s forwards;
+    }
+
+    @keyframes slideInLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-100vw); /* Start off-screen on the left */
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0); /* End at its original position */
+      }
+    }
+
+    @keyframes slideInRight {
+      0% {
+        opacity: 0;
+        transform: translateX(100vw); /* Start off-screen on the right */
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0); /* End at its original position */
+      }
+    }
+    
+    .buttons {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      margin-block-start: 1.33em;
+      gap: 10px;
+    }
+
+    .buttons button {
+      max-width: 48%;
+      cursor: pointer;
+      white-space: nowrap; /* Prevent text from wrapping */
+      flex-basis: 100px; /* Ensure buttons take up equal space */
+      flex-shrink: 1;
+      min-width: 100px;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  <section>
+    <div class="hero-container">
+      <video src="https://res.cloudinary.com/dam11m9bq/video/upload/v1717891439/video-1_wvamht.mp4" autoplay loop muted></video>
+      <h1>
+        <span class="first-name">Jake</span>
+        <span style="width: 20px;"></span>
+        <span class="last-name"><b>SCHRAMM</b></span>
+      </h1>
+      <br>
+      <h2 class="pixelated">Software Engineer</h2>
+    </div>
+  </section>
+
+  <div style="width: 100%; margin: 0 auto; margin-top: -10vh">
+    <div class="products">
+      <h5>Welcome!</h5>
+      <p>I am a highly motivated software engineer with 2.5+ years of experience and a passion for writing clean, maintainable code. I'm dedicated to constantly improving my skills. I take my work seriously and thrive in collaborative environments, enjoying the process of coming up with innovative and well-structured solutions and contributing to my team's success. My enthusiasm for technology and commitment to best practices ensure that I consistently deliver exceptional results.</p>
+      <div style="height: 60px"></div>
+      <h1>Projects</h1>
+      <div style="height: 60px"></div>
+      <div class="block-columns flex-layout">
+        <div class="card-shadow block-column">
+          <lord-icon
+            src="https://res.cloudinary.com/dam11m9bq/raw/upload/v1717889713/video_jbxr2j.json"
+            trigger="loop"
+            style="width:80px;height:80px">
+        </lord-icon>
+          <h4>Video Chat App (Zoom Clone)</h4>
+          <span>Web app that allows users to join any room instantly by specifying a room name and start a seamless video chat with everyone in the room. This simplifies group video communication, offering a hassle-free, Zoom-like experience without the need for complicated setups.</span>
+          <div class="buttons">
+            <button id="video-chat-link" type="button" class="btn btn-primary">Show More</button>
+            <button id="video-chat-github" type="button" class="btn btn-primary" style="background-color: #c04cc0;">Git Hub</button>
+          </div>
+        </div>
+        <div class="card-shadow block-column">
+          <lord-icon
+            src="https://res.cloudinary.com/dam11m9bq/raw/upload/v1717889427/heartbeat_syxjxy.json"
+            trigger="loop"
+            state="loop-cycle"
+            style="width:80px;height:80px">
+        </lord-icon>
+          <h4>Health Tracker</h4>
+          <span>Web app that helps you achieve your health goals by providing personalized daily calorie and macronutrient targets based on your personal metrics. Easily log your meals, track your calorie and macronutrient intake, and visualize your progress with intuitive charts and graphs.</span>
+          <div class="buttons">
+            <button id="health-tracker-link" type="button" class="btn btn-primary">Show More</button>
+            <button id="health-tracker-github" type="button" class="btn btn-primary" style="background-color: #c04cc0;">Git Hub</button>
+          </div>
+        </div>
+        <div class="card-shadow block-column">
+          <lord-icon
+            src="https://res.cloudinary.com/dam11m9bq/raw/upload/v1717889790/document_sb6rjp.json"
+            trigger="loop"
+            style="width:80px;height:80px">
+          </lord-icon>
+          <h4>Document Editing and Social Platform</h4>
+          <span>Create, edit, and save documents with a rich text editor. Share your work with friends or on a public forum and explore published documents from other users based on visibility settings. Add or remove friends to customize your social network and enjoy seamless collaboration.</span>
+          <div class="buttons">
+            <button id="doc-platform-link" type="button" class="btn btn-primary">Show More</button>
+            <button id="doc-platform-github" type="button" class="btn btn-primary" style="background-color: #c04cc0;">Git Hub</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.pixelated').forEach(element => {
+          element.classList.add('show');
+        });
+    });
+
+    document.querySelector('#doc-platform-link').addEventListener('click', function() {
+      window.location.href = 'doc-platform.html';
+    });
+
+    document.querySelector('#video-chat-link').addEventListener('click', function() {
+      window.location.href = 'video-chat.html';
+    });
+
+    document.querySelector('#health-tracker-link').addEventListener('click', function() {
+      window.location.href = 'health-tracker.html';
+    });
+
+    document.querySelector('#health-tracker-github').addEventListener('click', function() {
+      window.open("https://github.com/ToddSpainhour/swe-5063-healthy-bytes", '_blank').focus();
+    });
+
+    document.querySelector('#video-chat-github').addEventListener('click', function() {
+      window.open("https://github.com/jake-schmm/CollaborationTool", '_blank').focus();
+    });
+
+    document.querySelector('#doc-platform-github').addEventListener('click', function() {
+      window.open("https://github.com/jake-schmm/WordProcessor", '_blank').focus();
+    });
+  </script>
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.0/mdb.umd.min.js"></script>
+</body>
+<footer style="background-color: white; text-align: center;">
+  <a href="https://lordicon.com/">Icons by Lordicon.com</a>
+</footer>
+</html>
